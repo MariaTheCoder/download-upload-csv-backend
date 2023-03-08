@@ -15,6 +15,15 @@ const app = express();
 app.use(cors());
 
 /**
+ * The server should be running now which means that the client should be able to connect to the backend.
+ * We can get this by creating a http get request that sends back a message to the client that the server is running when the route 'http://localhost:9000/' is visited.
+ * Go ahead and test this in the browser. The message should appear. I will wait...
+ */
+app.get("/", (req, res) => {
+  res.send("The server is running");
+});
+
+/**
  * We have created an Express application.
  * Now we can call a method of app called listen and make the Express application listen to a specific port and execute a specific line of code once a user connects.
  * Let us print a console.log message in our case.
