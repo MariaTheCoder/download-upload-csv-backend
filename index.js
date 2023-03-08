@@ -3,6 +3,18 @@ const cors = require("cors");
 const port = 9000;
 
 /**
+ * Add the data from the frontend to the document
+ */
+let data = {
+  headers: ["Id", "Name", "isSmart"],
+  data: [
+    [1, "Maria", true],
+    [2, "Kerim", true],
+    [3, "Ms. DumbDumb", false],
+  ],
+};
+
+/**
  * Create Express application by calling the Express function.
  * The Express function returns an object which we want to store into a variable constant for later use
  */
@@ -21,6 +33,13 @@ app.use(cors());
  */
 app.get("/", (req, res) => {
   res.send("The server is running");
+});
+
+/**
+ * When the client connects to route 'http://localhost:9000/posts', return the content of the data variable to the frontend in json format
+ */
+app.get("/posts", (req, res) => {
+  res.json(data);
 });
 
 /**
