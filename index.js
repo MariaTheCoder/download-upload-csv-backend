@@ -43,6 +43,13 @@ app.get("/posts", (req, res) => {
 });
 
 /**
+ * When a get request is sent from the client side to the backend asking for a specific post with a given id, return that post only to the client
+ */
+app.get("/posts/:id", (req, res) => {
+  res.json(data.data.find((post) => post[0] === Number(req.params.id)));
+});
+
+/**
  * We have created an Express application.
  * Now we can call a method of app called listen and make the Express application listen to a specific port and execute a specific line of code once a user connects.
  * Let us print a console.log message in our case.
