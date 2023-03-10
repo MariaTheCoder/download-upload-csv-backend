@@ -25,6 +25,7 @@ const app = express();
  * Below we add cors as middleware to our Express application.
  */
 app.use(cors());
+app.use(express.json());
 
 /**
  * The server should be running now which means that the client should be able to connect to the backend.
@@ -47,6 +48,29 @@ app.get("/posts", (req, res) => {
  */
 app.get("/posts/:id", (req, res) => {
   res.json(data.data.find((post) => post[0] === Number(req.params.id)));
+});
+
+/**
+ * Create a delete method that deletes all current posts and headers
+ */
+app.delete("/posts", (req, res) => {
+  data = {
+    headers: [],
+    data: [],
+  };
+
+  res.json(data);
+});
+
+/**
+ * When a csv file with new data is being uploaded in the front-end, we want to be able to receive the sent data and save it to the backend.
+ * Ideally, we want the backend to be the single source of truth.
+ * In order to do this, we want an http request of the method post that .
+ */
+app.post("/posts", (req, res) => {
+  console.log(req.body);
+  //   console.log("New posts receieved. Data sent to frontend: ", data);
+  res.sendStatus(200);
 });
 
 /**
