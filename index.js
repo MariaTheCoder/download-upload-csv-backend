@@ -68,9 +68,12 @@ app.delete("/posts", (req, res) => {
  * In order to do this, we want an http request of the method post that .
  */
 app.post("/posts", (req, res) => {
-  console.log(req.body);
-  //   console.log("New posts receieved. Data sent to frontend: ", data);
-  res.sendStatus(200);
+  if (!req.body) {
+    return res.sendStatus(500);
+  }
+
+  res.status = 200;
+  res.json(req.body);
 });
 
 /**
