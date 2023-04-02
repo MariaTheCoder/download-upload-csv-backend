@@ -76,6 +76,21 @@ app.post("/posts", (req, res) => {
   res.json(req.body);
 });
 
+app.put("/put/:id", (req, res) => {
+  if (!req.body) {
+    return res.sendStatus(500);
+  }
+
+  const foundIndex = data.data.findIndex(
+    (post) => post[0] === Number(req.params.id)
+  );
+
+  data.data[foundIndex] === req.body;
+
+  res.status = 200;
+  res.json(req.body);
+});
+
 /**
  * We have created an Express application.
  * Now we can call a method of app called listen and make the Express application listen to a specific port and execute a specific line of code once a user connects.
