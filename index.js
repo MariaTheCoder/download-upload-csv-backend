@@ -8,9 +8,9 @@ const port = 9000;
 let data = {
   headers: ["Id", "Name", "isSmart"],
   data: [
-    [1, "Maria", true],
-    [2, "Kerim", true],
-    [3, "Ms. DumbDumb", false],
+    [1, "Maria", true, { editOn: false }],
+    [2, "Kerim", true, { editOn: false }],
+    [3, "Ms. DumbDumb", false, { editOn: false }],
   ],
 };
 
